@@ -15,7 +15,6 @@ import java.util.Scanner;
 @EnableDiscoveryClient
 @EnableFeignClients
 public class FyqzServerUserApplication {
-
 	public static void main(String[] args) {
 		System.out.println("================================================== 开始启动 应用fyqz-service-user =============================================================");
 		System.out.println("请在控制台指定fyqz-service-user应用的端口号 —— [端口号随意指定，注意不要与本机端口号出现冲突即可]");
@@ -25,5 +24,4 @@ public class FyqzServerUserApplication {
 		new SpringApplicationBuilder(FyqzServerUserApplication.class).properties("server.port=" + port).run(args);
 		System.out.println("================================================== 应用fyqz-service-user 启动成功 =============================================================");
 	}
-
 }
