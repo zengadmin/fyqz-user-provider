@@ -17,8 +17,8 @@ public class RedissonHelper implements CacheManager {
 	private RedissonClient redissonClient;
 	private final Integer EXPIRE =21600;
 
-	public void setClient(Client Client) {
-		this.redissonClient = Client.getRedissonClient();
+	public void setClient(Client client) {
+		this.redissonClient = client.getRedissonClient();
 		CacheUtil.setLockManager(this);
 	}
 

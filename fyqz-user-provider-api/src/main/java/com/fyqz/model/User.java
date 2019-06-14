@@ -1,13 +1,10 @@
 package com.fyqz.model;
 
+import com.fyqz.base.BaseModel;
 import lombok.Data;
 
-import java.io.Serializable;
-
 @Data
-public class User implements Serializable{
-    private Integer personId;
+public class User extends BaseModel{
     private String name;
-    private int age;
     private String msg;
 }

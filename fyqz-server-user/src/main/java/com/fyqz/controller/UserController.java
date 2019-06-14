@@ -4,7 +4,7 @@ package com.fyqz.controller;
 import com.fyqz.model.Person;
 import com.fyqz.model.User;
 import io.swagger.annotations.ApiOperation;
-import org.apache.commons.lang.math.RandomUtils;
+import org.redisson.liveobject.resolver.UUIDGenerator;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,7 +36,7 @@ public class UserController {
     @RequestMapping(value = "/hello", method = RequestMethod.POST)
     public User hello(@RequestBody User user, HttpServletRequest request) {
         user.setMsg(request.getRequestURL().toString());
-        user.setPersonId(RandomUtils.nextInt());
+        user.setId(UUIDGenerator.INSTANCE.toString());
         return user;
     }
 }
