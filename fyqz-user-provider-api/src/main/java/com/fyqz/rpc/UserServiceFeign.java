@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @FeignClient(value = "fyqz-server-user",fallback = UserServiceHystrix.class)
 public interface UserServiceFeign {
 
-    @RequestMapping(value = "/person/1",method = RequestMethod.GET)
+    @RequestMapping(value = "/user/1",method = RequestMethod.GET)
     public String getUser();
 
     @RequestMapping(value = "/hello", method=RequestMethod.POST)
