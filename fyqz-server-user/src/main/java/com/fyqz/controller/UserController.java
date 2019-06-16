@@ -2,12 +2,14 @@ package com.fyqz.controller;
 
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.fyqz.dto.UserDto;
 import com.fyqz.dto.UserPageDto;
 import com.fyqz.model.User;
 import com.fyqz.result.Result;
 import com.fyqz.result.ResultUtil;
 import com.fyqz.service.impl.UserServiceImpl;
+import com.fyqz.util.DataUtil;
 import com.fyqz.util.LogUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -48,7 +50,11 @@ public class UserController {
     @PostMapping("/queryUserList")
     public Result queryUserList(@RequestBody UserPageDto userPage) {
         PageHelper.startPage(userPage.getPageNum(), userPage.getPageSize());
-        List<User> list=userService.selectList(new EntityWrapper<User>());
+        Wrapper wrapper=new EntityWrapper<User>();
+        if(DataUtil.isNotEmpty(userPage.getName())){
+            wrapper.like("name",userPage.getName());
+        }
+        List<User> list=userService.selectList(wrapper);
         return ResultUtil.success(new PageInfo<>(list));
     }
 
