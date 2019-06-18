@@ -1,7 +1,9 @@
 package com.fyqz.rpc.hystrix;
 
 
-import com.fyqz.model.User;
+import com.fyqz.dto.UserDto;
+import com.fyqz.result.Result;
+import com.fyqz.result.ResultUtil;
 import com.fyqz.rpc.UserServiceFeign;
 import org.springframework.stereotype.Component;
 
@@ -20,13 +22,13 @@ public class UserServiceHystrix implements UserServiceFeign {
      * @return
      */
     @Override
-    public String getUser() {
-        return "hystrix断路器生效了：sorry，person is empty！";
+    public Result queryUser(String userId) {
+       return  ResultUtil.error(104,"查询用户出错");
     }
 
-    @Override
-    public String hello(User user) {
 
-        return "hystrix断路器生效了：sorry，user is empty！";
+    @Override
+    public Result addUser(UserDto user) {
+        return  ResultUtil.error(104,"添加用户出错");
     }
 }

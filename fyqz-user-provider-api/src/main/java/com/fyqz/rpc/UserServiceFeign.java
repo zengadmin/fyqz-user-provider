@@ -1,8 +1,10 @@
 package com.fyqz.rpc;
 
-import com.fyqz.model.User;
+import com.fyqz.dto.UserDto;
+import com.fyqz.result.Result;
 import com.fyqz.rpc.hystrix.UserServiceHystrix;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -14,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @FeignClient(value = "fyqz-server-user",fallback = UserServiceHystrix.class)
 public interface UserServiceFeign {
 
-    @RequestMapping(value = "/user/1",method = RequestMethod.GET)
-    public String getUser();
+    @RequestMapping(value = "/queryUser/{userId}",method = RequestMethod.GET)
+    Result queryUser(@PathVariable("userId") String userId);
 
-    @RequestMapping(value = "/hello", method=RequestMethod.POST)
-    public String hello(User user);
+    @RequestMapping(value = "/addUser", method=RequestMethod.POST)
+    Result addUser(UserDto user);
 }
