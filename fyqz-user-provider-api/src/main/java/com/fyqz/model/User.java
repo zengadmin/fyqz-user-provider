@@ -16,4 +16,7 @@ public class User extends BaseModel{
 
     @TableId("msg")
     private String msg;
+
+    @TableId("password")
+    private String password;
 }

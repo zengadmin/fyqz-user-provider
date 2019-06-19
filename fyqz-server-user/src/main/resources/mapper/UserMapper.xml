@@ -11,10 +11,11 @@
 		<result column="update_time" property="updateTime" />
 		<result column="name" property="name" />
 		<result column="msg" property="msg" />
+		<result column="password" property="password" />
 	</resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, create_id AS createId, update_id AS updateId, create_time AS createTime, update_time AS updateTime, name, msg
+        id, create_id AS createId, update_id AS updateId, create_time AS createTime, update_time AS updateTime, name, msg,password
     </sql>
 </mapper>
